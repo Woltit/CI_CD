@@ -1,17 +1,32 @@
 package code;
 
-public class ItemRentalCalculator {
-    public double calculateRent(double pricePerDay, int days) {
-        if (days <= 0) {
-            throw new IllegalArgumentException("Кількість днів має бути більшою за 0");
+/**
+ * Calculator for rental items.
+ */
+public final class ItemRentalCalculator {
+
+    private static final int DISCOUNT_DAYS_THRESHOLD = 7;
+    private static final double DISCOUNT_RATE = 0.85;
+
+    /**
+     * Calculates the rent price based on days and daily rate.
+     *
+     * @param pricePerDay the price for one day of rent
+     * @param days        the number of rental days
+     * @return the calculated total rent price
+     */
+    public double calculateRent(final double pricePerDay, final int days) {
+        if (days > DISCOUNT_DAYS_THRESHOLD) {
+            return pricePerDay * days * DISCOUNT_RATE;
         }
-        double total = pricePerDay * days;
-        if (days > 7) {
-            total *= 0.85;
-        }
-        return total;
+        return pricePerDay * days;
     }
 
+    /**
+     * Checks if the promotion system is currently active.
+     *
+     * @return true if active, false otherwise
+     */
     public boolean isPromotionSystemActive() {
         return true;
     }
