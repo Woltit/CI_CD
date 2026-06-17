@@ -19,8 +19,14 @@ public final class ItemRentalCalculator {
      * @param pricePerDay the price for one day of rent
      * @param days        the number of rental days
      * @return the calculated total rent price
+     * @throws IllegalArgumentException if price or days are invalid
      */
     public double calculateRent(final double pricePerDay, final int days) {
+        // Додаємо валідацію вхідних даних для проходження тестів
+        if (pricePerDay < 0 || days <= 0) {
+            throw new IllegalArgumentException("Price per day cannot be negative and days must be greater than 0");
+        }
+
         if (days > DISCOUNT_DAYS_THRESHOLD) {
             return pricePerDay * days * DISCOUNT_RATE;
         }
