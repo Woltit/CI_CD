@@ -22,9 +22,13 @@ public final class ItemRentalCalculator {
      * @throws IllegalArgumentException if price or days are invalid
      */
     public double calculateRent(final double pricePerDay, final int days) {
-        if (pricePerDay < 0 || days <= 0) {
-            throw new IllegalArgumentException("Invalid input: price "
-                    + "cannot be < 0 and days must be > 0");
+        if (days <= 0) {
+            throw new IllegalArgumentException("Кількість днів має бути "
+                    + "більшою за 0");
+        }
+
+        if (pricePerDay < 0) {
+            throw new IllegalArgumentException("Invalid price");
         }
 
         if (days > DISCOUNT_DAYS_THRESHOLD) {
