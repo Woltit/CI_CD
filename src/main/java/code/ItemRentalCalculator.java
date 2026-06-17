@@ -5,7 +5,12 @@ package code;
  */
 public final class ItemRentalCalculator {
 
+    /** * Threshold in days to apply a discount.
+     */
     private static final int DISCOUNT_DAYS_THRESHOLD = 7;
+
+    /** * The discount rate applied to the total rent.
+     */
     private static final double DISCOUNT_RATE = 0.85;
 
     /**
